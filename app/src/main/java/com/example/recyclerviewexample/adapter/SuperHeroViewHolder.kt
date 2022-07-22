@@ -7,18 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recyclerviewexample.R
 import com.example.recyclerviewexample.SuperHero
+import com.example.recyclerviewexample.databinding.ItemSuperheroBinding
 
 class SuperHeroViewHolder(view: View):RecyclerView.ViewHolder(view){
 
-    val superHeroNa = view.findViewById<TextView>(R.id.tvSuperHeroName)
-    val realName = view.findViewById<TextView>(R.id.tvRealName)
-    val publisher = view.findViewById<TextView>(R.id.tvPublisher)
-    val photo = view.findViewById<ImageView>(R.id.ivSuperHero)
+    val binding = ItemSuperheroBinding.bind(view)
 
     fun render(superHeroModel: SuperHero){
-        superHeroNa.text = superHeroModel.superHeroName
-        realName.text = superHeroModel.realName
-        publisher.text = superHeroModel.publisher
-        Glide.with(photo.context).load(superHeroModel.photo).into(photo)
+        binding.tvSuperHeroName.text = superHeroModel.superHeroName
+        binding.tvRealName.text = superHeroModel.realName
+        binding.tvRealName.text = superHeroModel.publisher
+        Glide.with(binding.ivSuperHero.context).load(superHeroModel.photo).into(binding.ivSuperHero)
     }
 }
