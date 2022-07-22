@@ -2,6 +2,7 @@ package com.example.recyclerviewexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewexample.adapter.SuperHeroAdapter
@@ -21,6 +22,14 @@ class MainActivity : AppCompatActivity() {
 
     fun initRecyclerView(){
         binding.recyclerSuperHero.layoutManager = LinearLayoutManager(this)
-        binding.recyclerSuperHero.adapter = SuperHeroAdapter(SuperHeroProvider.superHeroList)
+        binding.recyclerSuperHero.adapter = SuperHeroAdapter(SuperHeroProvider.superHeroList) { superHero ->
+            onItemSelected(
+                superHero
+            )
+        }
+    }
+
+    fun onItemSelected(superHero: SuperHero){
+        Toast.makeText(this,superHero.superHeroName, Toast.LENGTH_SHORT).show()
     }
 }
